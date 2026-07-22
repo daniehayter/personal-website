@@ -1,4 +1,4 @@
-import { Briefcase, Calendar, MapPin, GraduationCap, Award, CheckCircle, Mail, Phone } from "lucide-react";
+import { Briefcase, Calendar, MapPin, GraduationCap, Award, CheckCircle, Mail } from "lucide-react";
 
 export default function Experience() {
   const experiences = [
@@ -117,7 +117,7 @@ export default function Experience() {
         <h1 className="text-4xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50">
           Professional Experience
         </h1>
-        <p className="mt-4 text-base sm:text-lg text-zinc-650 dark:text-zinc-355 max-w-4xl leading-relaxed">
+        <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-4xl leading-relaxed">
           Certified Scrum Product Owner (CSPO) and Product Manager with 7+ years of experience driving the end-to-end Product Development Life Cycle (PDLC) across high-growth SaaS applications. Proven track record of leveraging continuous discovery, AI-driven workflows, and API integrations to build scalable solutions that directly impact revenue and user engagement.
         </p>
 
@@ -126,11 +126,6 @@ export default function Experience() {
           <a href="mailto:aronjan2@gmail.com" className="flex items-center gap-1.5 hover:text-indigo-600 dark:hover:text-indigo-400">
             <Mail className="h-4 w-4" />
             aronjan2@gmail.com
-          </a>
-          <span className="hidden sm:inline text-zinc-300 dark:text-zinc-700">|</span>
-          <a href="tel:+919944293186" className="flex items-center gap-1.5 hover:text-indigo-600 dark:hover:text-indigo-400">
-            <Phone className="h-4 w-4" />
-            +91 9944293186
           </a>
           <span className="hidden sm:inline text-zinc-300 dark:text-zinc-700">|</span>
           <a href="https://linkedin.com/in/aron-daniel-b818a279" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-indigo-600 dark:hover:text-indigo-400">
@@ -258,7 +253,7 @@ export default function Experience() {
                   {exp.bullets.map((bullet, bIdx) => (
                     <li
                       key={bIdx}
-                      className="text-sm text-zinc-650 dark:text-zinc-355 leading-relaxed flex items-start gap-2"
+                      className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed flex items-start gap-2"
                     >
                       <span className="h-1.5 w-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600 shrink-0 mt-2" />
                       <span>{bullet}</span>
