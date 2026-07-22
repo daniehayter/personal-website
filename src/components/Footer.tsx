@@ -1,4 +1,4 @@
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -42,16 +42,9 @@ export default function Footer() {
               <circle cx="4" cy="4" r="2" />
             </svg>
           </a>
-          <a
-            href="tel:+919944293186"
-            className="text-zinc-500 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400 transition-colors"
-            title="Phone"
-          >
-            <Phone className="h-5 w-5" />
-          </a>
         </div>
 
-        <p className="text-xs text-zinc-400 dark:text-zinc-505">
+        <p className="text-xs text-zinc-400 dark:text-zinc-500">
           © {new Date().getFullYear()} Aron Daniel. All rights reserved.
         </p>
       </div>
