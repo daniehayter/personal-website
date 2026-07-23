@@ -8,8 +8,8 @@ export default function Experience() {
       period: "February 2023 - Present",
       location: "Coimbatore, India (SaaS)",
       bullets: [
-        "Accelerated customer onboarding and increased monthly platform engagement by 700% by leading continuous discovery and launching an AI-powered Trust Center builder that auto-generates personalized platform setups.",
-        "Streamlined Agile delivery for complex enterprise features (Granular Access Control) by translating stakeholder requirements into prioritized backlogs, actively facilitating sprint planning, and leading UAT with engineering pods.",
+        "Accelerated customer onboarding and increased monthly platform engagement by 700% by leading continuous discovery and launching an AI-powered Trust Center builder that auto-generates personalized compliance documentation.",
+        "Streamlined Agile delivery for complex enterprise features (Granular Access Control) by translating stakeholder requirements into prioritized backlogs, actively facilitating sprint planning, and removing blockers.",
         "Unblocked a high-value enterprise deal by analyzing a third-party DocuSign API bottleneck and engineering a custom metadata-scraping solution to ensure seamless data flow.",
         "Reduced UX design cycles by 50% by partnering with cross-functional design teams to validate wireframes and AI-driven prototypes using direct customer feedback before development.",
         "Architected a scalable Salesforce integration utilizing automated data logic to sync CRM contacts with platform access, ensuring data integrity across enterprise systems."
@@ -24,7 +24,7 @@ export default function Experience() {
         "Increased successful product activations by 20% by executing targeted A/B tests and UX optimizations for a self-service customer onboarding initiative.",
         "Improved search, discovery, and conversion metrics by redesigning property manager listing pages (Product Detail Pages), optimizing the shopping and viewing experience for end-users.",
         "Mitigated systemic platform security risks by analyzing user behavior and web analytics to identify vulnerabilities and launch a dedicated security infrastructure.",
-        "Architected a scalable B2B/B2C eCommerce storefront by partnering directly with the CTO to evaluate and transition architectures across Salesforce, NetSuite, and Magento, supporting a $1M MRR portfolio."
+        "Architected a scalable B2B/B2C eCommerce storefront by partnering directly with the CTO to evaluate and transition architectures across Salesforce, NetSuite, and Magento, supporting a $1M+ MRR business line."
       ]
     },
     {
@@ -118,7 +118,7 @@ export default function Experience() {
           Professional Experience
         </h1>
         <p className="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-4xl leading-relaxed">
-          Certified Scrum Product Owner (CSPO) and Product Manager with 7+ years of experience driving the end-to-end Product Development Life Cycle (PDLC) across high-growth SaaS applications. Proven track record of leveraging continuous discovery, AI-driven workflows, and API integrations to build scalable solutions that directly impact revenue and user engagement.
+          Certified Scrum Product Owner (CSPO) and Product Manager with 7+ years of experience driving the end-to-end Product Development Life Cycle (PDLC) across high-growth SaaS applications. Proven track record of building AI-powered features, scaling engagement metrics, and shipping enterprise-grade infrastructure with cross-functional teams.
         </p>
 
         {/* Contact Links */}
