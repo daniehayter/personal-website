@@ -1,59 +1,51 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen } from "lucide-react";
+import type { Metadata } from "next";
+import { ArrowRight } from "lucide-react";
 import { getSortedPostsData } from "@/lib/blog";
 
-export const metadata = {
-  title: "Blog | Aron Daniel",
-  description: "Writing about SaaS, Product Management methodology, Agile execution, and AI prototyping.",
+export const metadata: Metadata = {
+  title: "Writing",
+  description: "Notes on product management, continuous discovery, growth and building with AI.",
 };
 
 export default function BlogList() {
   const posts = getSortedPostsData();
 
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-      <div className="max-w-3xl border-b border-zinc-200 dark:border-zinc-800 pb-12">
-        <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-600 dark:text-indigo-400">
-          <BookOpen className="h-4 w-4" />
-          The Product & Tech Log
-        </span>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50">
-          Articles & Insights
+    <div className="mx-auto w-full max-w-6xl px-5 pb-24 pt-14 sm:px-8 sm:pt-24">
+      <header className="max-w-3xl">
+        <p className="eyebrow rise">Writing</p>
+        <h1 className="rise mt-6 font-serif text-6xl leading-[0.95] tracking-tight sm:text-8xl">
+          Notes from <em className="text-accent-ink">the work.</em>
         </h1>
-        <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-          Thoughts on agile delivery, product design loops, rapid prototyping, and utilizing generative AI to build SaaS solutions.
+        <p className="rise mt-6 text-lg leading-relaxed text-ink-2">
+          Product management, continuous discovery, growth experiments and building with generative
+          AI.
         </p>
-      </div>
+      </header>
 
-      <div className="mt-16 max-w-3xl space-y-16">
-        {posts.length === 0 ? (
-          <p className="text-zinc-500 dark:text-zinc-400">No blog posts found. Add markdown files in `content/blog/` to publish articles.</p>
-        ) : (
-          posts.map((post) => (
-            <article key={post.slug} className="group relative flex flex-col items-start">
-              <time
-                dateTime={post.date}
-                className="text-xs font-semibold text-zinc-400 dark:text-zinc-500"
-              >
+      <ul className="mt-16 border-t border-line">
+        {posts.length === 0 && <li className="py-8 text-muted">New writing soon.</li>}
+        {posts.map((post) => (
+          <li key={post.slug} className="border-b border-line">
+            <Link
+              href={`/blog/${post.slug}`}
+              className="group grid gap-2 py-8 sm:grid-cols-[11rem_1fr_auto] sm:items-baseline sm:gap-8"
+            >
+              <time dateTime={post.date} className="font-mono text-xs uppercase tracking-wider text-muted">
                 {post.date}
               </time>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                <Link href={`/blog/${post.slug}`}>
-                  <span className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-900/40 sm:-inset-x-6 sm:rounded-2xl" />
-                  <span className="relative z-10">{post.title}</span>
-                </Link>
-              </h2>
-              <p className="relative z-10 mt-3 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                {post.excerpt}
-              </p>
-              <div className="relative z-10 mt-4 flex items-center gap-1 text-sm font-semibold text-indigo-600 dark:text-indigo-400 group-hover:underline">
-                Read article
-                <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+              <div>
+                <h2 className="font-serif text-3xl leading-tight tracking-tight transition-colors group-hover:text-accent-ink sm:text-4xl">
+                  {post.title}
+                </h2>
+                {post.excerpt && <p className="mt-2 text-ink-2">{post.excerpt}</p>}
               </div>
-            </article>
-          ))
-        )}
-      </div>
+              <ArrowRight className="hidden h-5 w-5 text-muted transition-transform group-hover:translate-x-1 group-hover:text-accent sm:block" />
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

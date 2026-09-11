@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -14,9 +14,30 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+});
+
+const description =
+  "Product Manager for AI-powered SaaS. Continuous discovery, growth analytics and enterprise integrations — including an AI Trust Center builder that grew monthly platform engagement 700%.";
+
 export const metadata: Metadata = {
-  title: "Aron Daniel | Product Manager Portfolio",
-  description: "Product Manager with 6+ years of experience in SaaS environments, specializing in product roadmapping, rapid prototyping, and cross-functional leadership.",
+  metadataBase: new URL("https://arondaniel.online"),
+  title: {
+    default: "Aron Daniel — Product Manager, AI-Powered SaaS",
+    template: "%s — Aron Daniel",
+  },
+  description,
+  openGraph: {
+    title: "Aron Daniel — Product Manager, AI-Powered SaaS",
+    description,
+    url: "https://arondaniel.online",
+    siteName: "Aron Daniel",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -27,11 +48,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-zinc-50 text-zinc-900 dark:bg-black dark:text-zinc-100 selection:bg-indigo-500 selection:text-white">
+      <body className="min-h-full flex flex-col bg-paper text-ink">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-ink focus:px-3 focus:py-2 focus:text-paper"
+        >
+          Skip to content
+        </a>
         <Header />
-        <main className="flex-grow flex flex-col w-full">
+        <main id="main" className="flex-grow flex flex-col w-full">
           {children}
         </main>
         <Footer />
