@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#05070c" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>GOD MACHINE</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2305070c'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%2345f0ff' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3.5' fill='%23ff3d8b'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Barlow+Condensed:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="./assets/index-Byvh4t7q.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-hgn37lO0.css">
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="stage"></canvas>
+
+      <!-- ============ HUD (in-combat, minimal DOM churn) ============ -->
+      <div id="hud" class="hud hidden" aria-hidden="true">
+        <div class="hud-top">
+          <div class="vitals">
+            <div class="hp-bar"><div id="hp-fill" class="hp-fill"></div><div id="hp-ghost" class="hp-ghost"></div>
+              <span id="hp-text" class="hp-text">100 / 100</span>
+            </div>
+            <div class="xp-bar"><div id="xp-fill" class="xp-fill"></div></div>
+            <div class="vital-meta">
+              <span id="lvl-text" class="pill">LV 1</span>
+              <span id="combo-text" class="pill combo hidden">x1</span>
+            </div>
+          </div>
+          <div class="stage-info">
+            <div id="stage-name" class="stage-name">STAGE 1</div>
+            <div id="stage-sub" class="stage-sub">ENTERING</div>
+            <div id="wave-progress" class="wave-progress"><div id="wave-fill"></div></div>
+          </div>
+          <div class="hud-right">
+            <button id="btn-pause" class="icon-btn" aria-label="Pause">II</button>
+            <div id="timer" class="timer">0:00</div>
+          </div>
+        </div>
+
+        <div id="boss-bar" class="boss-bar hidden">
+          <div class="boss-name">THE GOD MACHINE</div>
+          <div class="boss-track">
+            <div id="boss-ghost" class="boss-ghost"></div>
+            <div id="boss-fill" class="boss-fill"></div>
+            <div class="boss-notch"></div>
+          </div>
+        </div>
+
+        <div id="organ-strip" class="organ-strip"></div>
+        <div id="banner-layer" class="banner-layer"></div>
+      </div>
+
+      <!-- ============ CARD REWARD SCREEN ============ -->
+      <div id="reward" class="overlay reward hidden" aria-hidden="true">
+        <div class="reward-inner">
+          <div class="reward-head">
+            <div id="reward-kicker" class="reward-kicker">MUTATION AVAILABLE</div>
+            <h2 id="reward-title" class="reward-title">CHOOSE AN EVOLUTION</h2>
+            <div id="reward-hint" class="reward-hint">Your body will change.</div>
+          </div>
+          <div id="card-row" class="card-row"></div>
+          <div class="reward-foot">
+            <button id="btn-reroll" class="ghost-btn">REROLL <span id="reroll-count">1</span></button>
+            <div id="body-plan" class="body-plan"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ TITLE ============ -->
+      <div id="title" class="overlay title hidden" aria-hidden="true">
+        <div class="title-inner">
+          <div class="title-mark">
+            <h1>GOD<span>MACHINE</span></h1>
+            <div class="title-rule"></div>
+            <p class="title-tag">Move. Mutate. Become something worse.</p>
+          </div>
+          <button id="btn-start" class="primary-btn">BEGIN EVOLUTION</button>
+          <div class="title-controls">
+            <span><b>WASD</b> / <b>ARROWS</b> to move &nbsp;·&nbsp; <b>DRAG</b> on touch</span>
+            <span>You attack automatically. Cards do the rest.</span>
+          </div>
+          <div class="title-opts">
+            <label>QUALITY</label>
+            <div id="quality-toggle" class="seg">
+              <button data-q="low">LOW</button><button data-q="medium">MED</button><button data-q="high">HIGH</button>
+            </div>
+            <button id="btn-mute" class="ghost-btn small">SOUND: ON</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ PAUSE ============ -->
+      <div id="pause" class="overlay pause hidden" aria-hidden="true">
+        <div class="pause-inner">
+          <h2>PAUSED</h2>
+          <div id="pause-body" class="pause-body"></div>
+          <div class="pause-actions">
+            <button id="btn-resume" class="primary-btn">RESUME</button>
+            <button id="btn-quit" class="ghost-btn">ABANDON RUN</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ RUN SUMMARY ============ -->
+      <div id="summary" class="overlay summary hidden" aria-hidden="true">
+        <div class="summary-inner">
+          <h1 id="summary-title" class="summary-title">EVOLUTION TERMINATED</h1>
+          <div id="summary-form" class="summary-form">UNSTABLE ORGANISM</div>
+          <div id="summary-stats" class="summary-stats"></div>
+          <div id="summary-evos" class="summary-evos"></div>
+          <button id="btn-again" class="primary-btn big">RUN AGAIN</button>
+        </div>
+      </div>
+
+      <div id="touch-layer" class="touch-layer hidden"></div>
+      <div id="fps" class="fps hidden"></div>
+    </div>
+  </body>
+</html>
